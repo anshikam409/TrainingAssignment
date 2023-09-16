@@ -1,0 +1,7 @@
+D:\DotNetTraining\Assignment\Assignment5\Assignment5Q4\Assignment5Q4\bin\Debug\Assignment5Q4.exe.config
+D:\DotNetTraining\Assignment\Assignment5\Assignment5Q4\Assignment5Q4\bin\Debug\Assignment5Q4.exe
+D:\DotNetTraining\Assignment\Assignment5\Assignment5Q4\Assignment5Q4\bin\Debug\Assignment5Q4.pdb
+D:\DotNetTraining\Assignment\Assignment5\Assignment5Q4\Assignment5Q4\obj\Debug\Assignment5Q4.csproj.AssemblyReference.cache
+D:\DotNetTraining\Assignment\Assignment5\Assignment5Q4\Assignment5Q4\obj\Debug\Assignment5Q4.csproj.CoreCompileInputs.cache
+D:\DotNetTraining\Assignment\Assignment5\Assignment5Q4\Assignment5Q4\obj\Debug\Assignment5Q4.exe
+D:\DotNetTraining\Assignment\Assignment5\Assignment5Q4\Assignment5Q4\obj\Debug\Assignment5Q4.pdb
