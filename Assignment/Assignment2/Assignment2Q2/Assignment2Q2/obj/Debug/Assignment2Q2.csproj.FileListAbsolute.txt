@@ -1,7 +1,0 @@
-D:\Dotnet Training\Assignment2Q2\Assignment2Q2\bin\Debug\Assignment2Q2.exe.config
-D:\Dotnet Training\Assignment2Q2\Assignment2Q2\bin\Debug\Assignment2Q2.exe
-D:\Dotnet Training\Assignment2Q2\Assignment2Q2\bin\Debug\Assignment2Q2.pdb
-D:\Dotnet Training\Assignment2Q2\Assignment2Q2\obj\Debug\Assignment2Q2.csproj.AssemblyReference.cache
-D:\Dotnet Training\Assignment2Q2\Assignment2Q2\obj\Debug\Assignment2Q2.csproj.CoreCompileInputs.cache
-D:\Dotnet Training\Assignment2Q2\Assignment2Q2\obj\Debug\Assignment2Q2.exe
-D:\Dotnet Training\Assignment2Q2\Assignment2Q2\obj\Debug\Assignment2Q2.pdb
