@@ -31,8 +31,8 @@ namespace CaseStudyProject1
     {
         public static void Scenario1()
         {
-            Info info = new Info();
-            Student student1 = new Student(1, "Anshika", new DateTime(2001, 10, 03));
+            Info info = new Info(); //Instance of info class
+            Student student1 = new Student(1, "Anshika", new DateTime(2001, 10, 03)); //Instances of student class
             Student student2 = new Student(2, "Manya", new DateTime(2001, 10, 22));
             Console.WriteLine("***********************************************************************");
             Console.WriteLine("Scenario 1:");
@@ -42,14 +42,15 @@ namespace CaseStudyProject1
         public static void Scenario2()
         {
             Info info = new Info();
-            Student[] students = new Student[3];
-            students[0] = new Student(1, "Anshika", new DateTime(2001, 10, 03));
+            Student[] students = new Student[3]; //array of student class
+            students[0] = new Student(1, "Anshika", new DateTime(2001, 10, 03)); //storing objects in array
             students[1] = new Student(2, "Manya", new DateTime(2001, 10, 22));
             students[2] = new Student(3, "Sanidhya", new DateTime(2002, 11, 23));
             Console.WriteLine("\nScenario 2:");
-            foreach (Student student in students)
+            foreach (Student student in students) //iterate over the array
             {
-                info.Display(student);
+                info.Display(student); // calling display method for each student
+                Console.WriteLine();
             }
         }
         static void Main(string[] args)

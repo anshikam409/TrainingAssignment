@@ -5,60 +5,46 @@ using System.Text;
 using System.Threading.Tasks;
 namespace CaseStudyProject2
 {
-    public class Student
+    class Student
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public Student(int id, string name, DateTime dateOfBirth)
+        public Student(int id, string name)
         {
-            ID = id;
+            Id = id;
             Name = name;
-            DateOfBirth = dateOfBirth;
         }
     }
-    public class Course
+    class Course
     {
-        public int CourseID { get; set; }
+        public int CourseId { get; set; }
         public string CourseName { get; set; }
         public Course(int courseId, string courseName)
         {
-            CourseID = courseId;
+            CourseId = courseId;
             CourseName = courseName;
         }
     }
-    public class Enroll
+    class Enroll
     {
-        private Student student;
-        private Course course;
-        private DateTime enrollmentDate;
-        public Enroll(Student student, Course course)
+        public Student Student { get; set; }
+        public Course Course { get; set; }
+        public DateTime EnrollmentDate { get; set; }
+        public Enroll(Student student, Course course, DateTime enrollmentDate)
         {
-            this.student = student;
-            this.course = course;
-            enrollmentDate = DateTime.Now;
-        }
-        public Student GetStudent()
-        {
-            return student;
-        }
-        public Course GetCourse()
-        {
-            return course;
-        }
-        public DateTime GetEnrollmentDate()
-        {
-            return enrollmentDate;
+            Student = student;
+            Course = course;
+            EnrollmentDate = enrollmentDate;
         }
     }
-    public class AppEngine
+    class AppEngine
     {
         private List<Student> students = new List<Student>();
         private List<Course> courses = new List<Course>();
         private List<Enroll> enrollments = new List<Enroll>();
         public void Introduce(Course course)
         {
-            Console.WriteLine($"Course ID: {course.CourseID}, Course Name: {course.CourseName}");
+            Console.WriteLine($"Course ID: {course.CourseId}, Course Name: {course.CourseName}");
         }
         public void Register(Student student)
         {
@@ -74,50 +60,60 @@ namespace CaseStudyProject2
         }
         public void Enroll(Student student, Course course)
         {
-            enrollments.Add(new Enroll(student, course));
+            var enrollmentDate = DateTime.Now;
+            var enrollment = new Enroll(student, course, enrollmentDate);
+            enrollments.Add(enrollment);
         }
         public Enroll[] ListOfEnrollments()
         {
             return enrollments.ToArray();
         }
     }
-    public class Info
+    class Info
     {
-        public void DisplayEnrollmentDetails(Enroll enrollment)
+        public void DisplayStudentDetails(Student student)
         {
+            Console.WriteLine($"Student ID: {student.Id}");
+            Console.WriteLine($"Student Name: {student.Name}");
+        }
+        public void DisplayCourseDetails(Course course)
+        {
+            Console.WriteLine($"Course ID: {course.CourseId}");
+            Console.WriteLine($"Course Name: {course.CourseName}");
+        }
+        public void DisplayEnrollmentDetails(Enroll enroll)
+        {
+            Console.WriteLine();
+            Console.WriteLine("*************************************************************************");
             Console.WriteLine("Enrollment Details:");
-            Console.WriteLine($"Student ID: {enrollment.GetStudent().ID}");
-            Console.WriteLine($"Student Name: {enrollment.GetStudent().Name}");
-            Console.WriteLine($"Course ID: {enrollment.GetCourse().CourseID}");
-            Console.WriteLine($"Course Name: {enrollment.GetCourse().CourseName}");
-            Console.WriteLine($"Enrollment Date: {enrollment.GetEnrollmentDate()}");
+            DisplayStudentDetails(enroll.Student);
+            DisplayCourseDetails(enroll.Course);
+            Console.WriteLine($"Enrollment Date: {enroll.EnrollmentDate}");
         }
     }
-    public class App
+    class App
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             AppEngine appEngine = new AppEngine();
             Info info = new Info();
-            Student student1 = new Student(1, "Anshika", new DateTime(2001, 10, 03));
-            Student student2 = new Student(2, "Manya", new DateTime(2002, 11, 23));
-            Course course1 = new Course(101, "Information Technology");
-            Course course2 = new Course(102, "Computer Science");
+            Student student1 = new Student(1, "Anshika");
+            Student student2 = new Student(2, "Manya");
             appEngine.Register(student1);
             appEngine.Register(student2);
+            Course course1 = new Course(101, "C# Programming");
+            Course course2 = new Course(102, "SQL");
             appEngine.Introduce(course1);
             appEngine.Introduce(course2);
-            Console.WriteLine("*********************************************************************");
             appEngine.Enroll(student1, course1);
             appEngine.Enroll(student2, course2);
             Enroll[] enrollments = appEngine.ListOfEnrollments();
-            foreach (Enroll enrollment in enrollments)
+            foreach (Enroll enroll in enrollments)
             {
-                info.DisplayEnrollmentDetails(enrollment);
-                Console.WriteLine();
+                info.DisplayEnrollmentDetails(enroll);
+                Console.WriteLine(); 
             }
             Console.ReadLine();
         }
-
     }
 }
