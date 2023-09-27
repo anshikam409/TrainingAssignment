@@ -1,0 +1,6 @@
+D:\DotNetTraining\CSharpAssignment\Assignment8\Assigment8\Assigment8\bin\Debug\Assigment8.exe.config
+D:\DotNetTraining\CSharpAssignment\Assignment8\Assigment8\Assigment8\bin\Debug\Assigment8.exe
+D:\DotNetTraining\CSharpAssignment\Assignment8\Assigment8\Assigment8\bin\Debug\Assigment8.pdb
+D:\DotNetTraining\CSharpAssignment\Assignment8\Assigment8\Assigment8\obj\Debug\Assigment8.csproj.CoreCompileInputs.cache
+D:\DotNetTraining\CSharpAssignment\Assignment8\Assigment8\Assigment8\obj\Debug\Assigment8.exe
+D:\DotNetTraining\CSharpAssignment\Assignment8\Assigment8\Assigment8\obj\Debug\Assigment8.pdb
