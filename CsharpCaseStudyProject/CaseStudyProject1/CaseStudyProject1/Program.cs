@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 namespace CaseStudyProject1
 {
     class Student
@@ -31,34 +27,56 @@ namespace CaseStudyProject1
     {
         public static void Scenario1()
         {
-            Info info = new Info(); //Instance of info class
-            Student student1 = new Student(1, "Anshika", new DateTime(2001, 10, 03)); //Instances of student class
-            Student student2 = new Student(2, "Manya", new DateTime(2001, 10, 22));
-            Console.WriteLine("***********************************************************************");
+            Info info = new Info();
+            Console.WriteLine("********************************************************");
             Console.WriteLine("Scenario 1:");
+            Console.Write("Enter Student 1 ID: ");
+            int student1ID = int.Parse(Console.ReadLine());
+            Console.Write("Enter Student 1 Name: ");
+            string student1Name = Console.ReadLine();
+            Console.Write("Enter Student 1 Date of Birth (yyyy-MM-dd): ");
+            DateTime student1DateOfBirth = DateTime.Parse(Console.ReadLine());
+            Student student1 = new Student(student1ID, student1Name, student1DateOfBirth);
+            Console.Write("Enter Student 2 ID: ");
+            int student2ID = int.Parse(Console.ReadLine());
+            Console.Write("Enter Student 2 Name: ");
+            string student2Name = Console.ReadLine();
+            Console.Write("Enter Student 2 Date of Birth (yyyy-MM-dd): ");
+            DateTime student2DateOfBirth = DateTime.Parse(Console.ReadLine());
+            Student student2 = new Student(student2ID, student2Name, student2DateOfBirth);
             info.Display(student1);
             info.Display(student2);
         }
         public static void Scenario2()
         {
             Info info = new Info();
-            Student[] students = new Student[3]; //array of student class
-            students[0] = new Student(1, "Anshika", new DateTime(2001, 10, 03)); //storing objects in array
-            students[1] = new Student(2, "Manya", new DateTime(2001, 10, 22));
-            students[2] = new Student(3, "Sanidhya", new DateTime(2002, 11, 23));
             Console.WriteLine("\nScenario 2:");
-            foreach (Student student in students) //iterate over the array
+            Console.Write("Enter the number of students: ");
+            int numberOfStudents = int.Parse(Console.ReadLine());
+            Student[] students = new Student[numberOfStudents];
+            for (int i = 0; i < numberOfStudents; i++)
             {
-                info.Display(student); // calling display method for each student
+                Console.Write($"Enter Student {i + 1} ID: ");
+                int studentID = int.Parse(Console.ReadLine());
+                Console.Write($"Enter Student {i + 1} Name: ");
+                string studentName = Console.ReadLine();
+                Console.Write($"Enter Student {i + 1} Date of Birth (yyyy-MM-dd): ");
+                DateTime studentDateOfBirth = DateTime.Parse(Console.ReadLine());
+                students[i] = new Student(studentID, studentName, studentDateOfBirth);
+            }
+            Console.WriteLine("\nStudent Details:");
+            foreach (Student student in students)
+            {
+                info.Display(student);
                 Console.WriteLine();
             }
         }
         static void Main(string[] args)
         {
             Scenario1();
-            Console.WriteLine("**************************************************************************");           
+            Console.WriteLine("********************************************************");
             Scenario2();
-            Console.WriteLine("**************************************************************************");
+            Console.WriteLine("********************************************************");
             Console.ReadLine();
         }
     }

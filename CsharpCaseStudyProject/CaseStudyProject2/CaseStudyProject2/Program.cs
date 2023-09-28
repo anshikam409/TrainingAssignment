@@ -1,43 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 namespace CaseStudyProject2
 {
-    class Student
+    public class Student
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int Id { get; private set; }
+        public string Name { get; private set; }
         public Student(int id, string name)
         {
             Id = id;
             Name = name;
         }
     }
-    class Course
+    public class Course
     {
-        public int CourseId { get; set; }
-        public string CourseName { get; set; }
+        public int CourseId { get; private set; }
+        public string CourseName { get; private set; }
         public Course(int courseId, string courseName)
         {
             CourseId = courseId;
             CourseName = courseName;
         }
     }
-    class Enroll
+    public class Enroll
     {
-        public Student Student { get; set; }
-        public Course Course { get; set; }
-        public DateTime EnrollmentDate { get; set; }
+        private Student student;
+        private Course course;
+        private DateTime enrollmentDate;
         public Enroll(Student student, Course course, DateTime enrollmentDate)
         {
-            Student = student;
-            Course = course;
-            EnrollmentDate = enrollmentDate;
+            this.student = student;
+            this.course = course;
+            this.enrollmentDate = enrollmentDate;
+        }
+        public Student GetStudent()
+        {
+            return student;
+        }
+        public Course GetCourse()
+        {
+            return course;
+        }
+        public DateTime GetEnrollmentDate()
+        {
+            return enrollmentDate;
         }
     }
-    class AppEngine
+    public class AppEngine
     {
         private List<Student> students = new List<Student>();
         private List<Course> courses = new List<Course>();
@@ -46,9 +55,23 @@ namespace CaseStudyProject2
         {
             Console.WriteLine($"Course ID: {course.CourseId}, Course Name: {course.CourseName}");
         }
-        public void Register(Student student)
+        public void RegisterStudent()
         {
+            Console.Write("Enter Student ID: ");
+            int studentId = int.Parse(Console.ReadLine());
+            Console.Write("Enter Student Name: ");
+            string studentName = Console.ReadLine();
+            Student student = new Student(studentId, studentName);
             students.Add(student);
+        }
+        public void RegisterCourse()
+        {
+            Console.Write("Enter Course ID: ");
+            int courseId = int.Parse(Console.ReadLine());
+            Console.Write("Enter Course Name: ");
+            string courseName = Console.ReadLine();
+            Course course = new Course(courseId, courseName);
+            courses.Add(course);
         }
         public Student[] ListOfStudents()
         {
@@ -58,18 +81,31 @@ namespace CaseStudyProject2
         {
             return courses.ToArray();
         }
-        public void Enroll(Student student, Course course)
+        public void Enroll()
         {
-            var enrollmentDate = DateTime.Now;
-            var enrollment = new Enroll(student, course, enrollmentDate);
-            enrollments.Add(enrollment);
+            Console.Write("Enter Student ID: ");
+            int studentId = int.Parse(Console.ReadLine());
+            Console.Write("Enter Course ID: ");
+            int courseId = int.Parse(Console.ReadLine());
+            var student = students.Find(s => s.Id == studentId);
+            var course = courses.Find(c => c.CourseId == courseId);
+            if (student != null && course != null)
+            {
+                var enrollmentDate = DateTime.Now;
+                var enrollment = new Enroll(student, course, enrollmentDate);
+                enrollments.Add(enrollment);
+            }
+            else
+            {
+                Console.WriteLine("Student or Course not found. Enrollment failed.");
+            }
         }
         public Enroll[] ListOfEnrollments()
         {
             return enrollments.ToArray();
         }
     }
-    class Info
+    public class Info
     {
         public void DisplayStudentDetails(Student student)
         {
@@ -84,36 +120,57 @@ namespace CaseStudyProject2
         public void DisplayEnrollmentDetails(Enroll enroll)
         {
             Console.WriteLine();
-            Console.WriteLine("*************************************************************************");
+            Console.WriteLine("**********************************************************");
             Console.WriteLine("Enrollment Details:");
-            DisplayStudentDetails(enroll.Student);
-            DisplayCourseDetails(enroll.Course);
-            Console.WriteLine($"Enrollment Date: {enroll.EnrollmentDate}");
+            DisplayStudentDetails(enroll.GetStudent());
+            DisplayCourseDetails(enroll.GetCourse());
+            Console.WriteLine($"Enrollment Date: {enroll.GetEnrollmentDate()}");
         }
     }
-    class App
+    public class App
     {
         static void Main(string[] args)
         {
             AppEngine appEngine = new AppEngine();
             Info info = new Info();
-            Student student1 = new Student(1, "Anshika");
-            Student student2 = new Student(2, "Manya");
-            appEngine.Register(student1);
-            appEngine.Register(student2);
-            Course course1 = new Course(101, "C# Programming");
-            Course course2 = new Course(102, "SQL");
-            appEngine.Introduce(course1);
-            appEngine.Introduce(course2);
-            appEngine.Enroll(student1, course1);
-            appEngine.Enroll(student2, course2);
-            Enroll[] enrollments = appEngine.ListOfEnrollments();
-            foreach (Enroll enroll in enrollments)
+            while (true)
             {
-                info.DisplayEnrollmentDetails(enroll);
-                Console.WriteLine(); 
+                Console.WriteLine("Choose an option:");
+                Console.WriteLine("1. Register Student");
+                Console.WriteLine("2. Register Course");
+                Console.WriteLine("3. Enroll Student in Course");
+                Console.WriteLine("4. List Enrollments");
+                Console.WriteLine("5. Exit");
+                Console.Write("Enter your choice: ");
+                int choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        appEngine.RegisterStudent();
+                        break;
+                    case 2:
+                        appEngine.RegisterCourse();
+                        break;
+                    case 3:
+                        appEngine.Enroll();
+                        Console.WriteLine("Enrollment Successfull!");
+                        break;
+                    case 4:
+                        Enroll[] enrollments = appEngine.ListOfEnrollments();
+                        foreach (Enroll enroll in enrollments)
+                        {
+                            info.DisplayEnrollmentDetails(enroll);
+                            Console.WriteLine();
+                        }
+                        break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
             }
-            Console.ReadLine();
         }
     }
 }

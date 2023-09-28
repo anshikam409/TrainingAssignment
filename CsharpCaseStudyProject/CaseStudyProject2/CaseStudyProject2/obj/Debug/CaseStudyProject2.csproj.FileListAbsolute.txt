@@ -1,7 +1,6 @@
 D:\DotNetTraining\CsharpCaseStudyProject\CaseStudyProject2\CaseStudyProject2\bin\Debug\CaseStudyProject2.exe.config
 D:\DotNetTraining\CsharpCaseStudyProject\CaseStudyProject2\CaseStudyProject2\bin\Debug\CaseStudyProject2.exe
 D:\DotNetTraining\CsharpCaseStudyProject\CaseStudyProject2\CaseStudyProject2\bin\Debug\CaseStudyProject2.pdb
-D:\DotNetTraining\CsharpCaseStudyProject\CaseStudyProject2\CaseStudyProject2\obj\Debug\CaseStudyProject2.csproj.AssemblyReference.cache
 D:\DotNetTraining\CsharpCaseStudyProject\CaseStudyProject2\CaseStudyProject2\obj\Debug\CaseStudyProject2.csproj.CoreCompileInputs.cache
 D:\DotNetTraining\CsharpCaseStudyProject\CaseStudyProject2\CaseStudyProject2\obj\Debug\CaseStudyProject2.exe
 D:\DotNetTraining\CsharpCaseStudyProject\CaseStudyProject2\CaseStudyProject2\obj\Debug\CaseStudyProject2.pdb
