@@ -3,6 +3,7 @@ create database sqltest1
 
 --use that database
 use sqltest1
+
 --creating table books
 create table books(
 id int primary key,title varchar(100),author varchar(50), isbn numeric(20) unique,published_date date

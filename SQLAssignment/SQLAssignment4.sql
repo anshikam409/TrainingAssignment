@@ -64,36 +64,39 @@ insert into employee values(7900,'JAMES','CLERK',7698,'03-DEC-81',950,null,30)
 insert into employee values(7902,'FORD','ANALYST',7566,'03-DEC-81',3000,null,20)
 insert into employee values(7934,'MILLER','CLERK',7782,'23-JAN-82',1300,null,10)
 
+select* from employee
+--creating table holiday
+
 CREATE TABLE Holiday (
     holiday_date DATE PRIMARY KEY,
     holiday VARCHAR(30)
 )
+
+--Inserting values in table holiday
 
 INSERT INTO Holiday VALUES
 ('2023-09-05', 'Teachers Day'),
 ('2023-08-15', 'Independence Day'),
 ('2023-11-13', 'Diwali'),
 ('2023-12-25', 'Christmas'),
-('2024-01-01', 'New Year');
+('2024-01-01', 'New Year')
 
-create trigger RestrictDataholiday
-on employee
-for insert, update, delete 
-as
-begin    
-declare @holiday varchar(50), @holiday_date date
-set @holiday_date = convert(date, getdate())
-select @holiday = holiday    
-from Holiday    
-where holiday_date = @holiday_date 
-if @holiday IS NOT NULL     
-begin         
-rollback transaction        
-raiserror('Due to %s, you cannot manipulate data', 16, 1, @holiday_name)     
-end
-end
+CREATE or alter TRIGGER RestrictDataholiday
+ON Employee
+FOR INSERT, UPDATE, DELETE
+AS
+BEGIN 
+DECLARE @Holiday VARCHAR(50), @holiday_date DATE
+SET @holiday_date = CONVERT(DATE, GETDATE())
+SELECT @Holiday = Holiday 
+FROM Holiday 
+WHERE holiday_date = @holiday_date 
+IF @holiday IS NOT NULL 
+BEGIN 
+ROLLBACK TRANSACTION 
+RAISERROR('Due to %s, you cannot manipulate data', 16, 1, @holiday) 
+END
+END
 
- 
-
-select * from employee
-insert into employee values(7355,'Anshika', 'SDE', 10000,'2023-10-03',2499,null,22)
+delete from employee
+where EMPNO=7355
