@@ -65,38 +65,44 @@ insert into employee values(7902,'FORD','ANALYST',7566,'03-DEC-81',3000,null,20)
 insert into employee values(7934,'MILLER','CLERK',7782,'23-JAN-82',1300,null,10)
 
 select* from employee
+
 --creating table holiday
+create table Holidays
+(holiday_date Date Primary Key, holiday_name nvarchar(max));
 
-CREATE TABLE Holiday (
-    holiday_date DATE PRIMARY KEY,
-    holiday VARCHAR(30)
-)
+--inserting values in table holidays
 
---Inserting values in table holiday
+INSERT INTO HOLIDAYs values
+('2024-01-26','Republic Day'),
+('2023-08-15','Independence Day'),
+('2023-11-13','Diwali'),
+('2023-12-25','Christmas'),
+('2023-10-16','Garba Night Day2')
 
-INSERT INTO Holiday VALUES
-('2023-09-05', 'Teachers Day'),
-('2023-08-15', 'Independence Day'),
-('2023-11-13', 'Diwali'),
-('2023-12-25', 'Christmas'),
-('2024-01-01', 'New Year')
+--updating values in table Holidays
 
-CREATE or alter TRIGGER RestrictDataholiday
-ON Employee
-FOR INSERT, UPDATE, DELETE
-AS
-BEGIN 
-DECLARE @Holiday VARCHAR(50), @holiday_date DATE
+update Holidays
+set holiday_name='Gandhi Jayanti'
+where holiday_date='2023-10-02'
+
+
+CREATE TRIGGER RestrictDataholiday
+ON employee
+FOR INSERT, UPDATE, DELETE 
+AS 
+BEGIN     
+DECLARE @Holiday_name VARCHAR(50), @holiday_date DATE
 SET @holiday_date = CONVERT(DATE, GETDATE())
-SELECT @Holiday = Holiday 
-FROM Holiday 
+SELECT @Holiday_name = Holiday_name     
+FROM Holidays     
 WHERE holiday_date = @holiday_date 
-IF @holiday IS NOT NULL 
-BEGIN 
-ROLLBACK TRANSACTION 
-RAISERROR('Due to %s, you cannot manipulate data', 16, 1, @holiday) 
-END
+IF @holiday_name IS NOT NULL     
+BEGIN         
+ROLLBACK TRANSACTION        
+RAISERROR('Due to %s, you cannot manipulate data', 16, 1, @holiday_name)     
+END 
 END
 
-delete from employee
-where EMPNO=7355
+select * from employee
+ 
+insert into employee values(7355,'Anshika', 'SDE', 10000,'2023-10-03',5678,null,20)
