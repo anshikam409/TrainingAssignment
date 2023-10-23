@@ -11,17 +11,22 @@ namespace StoredprocedureCSharp
     {
         static void Main(string[] args)
         {
-            string connectionString = @"Server = ICS - LT - C9S0LQ3; Database = Codebased; Trusted_Connection = True;";
+            string connectionString = "Server=ICS-LT-C9S0LQ3;Database=Codebased;Trusted_Connection=True;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                using (SqlCommand command = new SqlCommand("AddEmployees", connection))
+                using (SqlCommand command = new SqlCommand("AddEmployeees", connection))
                 {
+                    Console.WriteLine("Enter the emp name");
+                    string empname = Console.ReadLine();
+                    Console.WriteLine("Enter the emp salary");
+                    string empsal = Console.ReadLine();
+                    Console.WriteLine("Enter the emp type (either F or P)");
+                    string emptype = Console.ReadLine();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@empno", 7775);
-                    command.Parameters.AddWithValue("@empname", "Anshika");
-                    command.Parameters.AddWithValue("@empsal", 50000.00);
-                    command.Parameters.AddWithValue("@emptype", "F");
+                    command.Parameters.AddWithValue("@empname", empname);
+                    command.Parameters.AddWithValue("@empsal", empsal);
+                    command.Parameters.AddWithValue("@emptype", emptype);
                     command.ExecuteNonQuery();
                 }
             }

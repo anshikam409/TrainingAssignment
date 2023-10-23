@@ -2,8 +2,13 @@ create database Codebased
 use Codebased
 
 --I
---a. Create a table called Code_Employee(empno int primary key,empname varchar(35), (is a required field),empsal numeric(10,2) - (check empsal >=25000)
---emptype char(1) ) (either 'F' for fulltime or 'P' part time) (Empty Table)
+--a. Create a table called Code_Employee(empno int primary key,empname varchar(35), (is a required field)empsal numeric(10,2) - (check empsal >=25000) emptype char(1) ) (either 'F' for fulltime or 'P' part time) (Empty Table)
+--b. Create a stored procedure to add new employee records. The procedure should accept all the employee details as input parameters, except empno. 
+--Generate the new employee no in the procedure and then insert the record
+--Test the procedure
+--c. Using Ado.net classes/methods, insert employee record in the table by invoking the procedure  
+--d. Display all the records (including the newely added record)
+
 CREATE TABLE Code_Employees (
     empno int PRIMARY KEY,
     empname varchar(35),
@@ -11,23 +16,25 @@ CREATE TABLE Code_Employees (
     emptype char(1) CHECK (emptype IN ('F', 'P'))
 );
 
-CREATE PROCEDURE AddEmployees
-    @empno int,
+CREATE PROCEDURE AddEmployeees
     @empname varchar(35),
     @empsal decimal(10,2),
     @emptype char(1)
 AS
 BEGIN
+     declare @empno int;
+    set @empno = (select isnull(max(empno), 0) + 1 from Code_Employees);
+
     INSERT INTO Code_Employees(empno, empname, empsal, emptype)
     VALUES (@empno, @empname, @empsal, @emptype)
 END;
 
 --select* from Employee
 
-EXEC AddEmployees 7369,'manya',8000.00,'F'
-EXEC AddEmployees 7499,'anshika',5001.00,'P'
-EXEC AddEmployees 7521,'prachi',6000.00,'F'
-EXEC AddEmployees 7566,'ayushi',2975.00,'P'
+EXEC AddEmployeees 'manya',8000.00,'F'
+EXEC AddEmployeees 'anshika',5001.00,'P'
+EXEC AddEmployeees 'prachi',6000.00,'F'
+EXEC AddEmployeees 'ayushi',2975.00,'P'
 
 --II. Write a Cursor program, that retrieves all the employees and updates salary for all employees of Department 10(Accounting) by 15%
 
