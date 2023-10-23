@@ -1,0 +1,7 @@
+D:\DotNetTraining\ADO.NetCodeBasedTest\StoredprocedureCSharp\StoredprocedureCSharp\bin\Debug\StoredprocedureCSharp.exe.config
+D:\DotNetTraining\ADO.NetCodeBasedTest\StoredprocedureCSharp\StoredprocedureCSharp\bin\Debug\StoredprocedureCSharp.exe
+D:\DotNetTraining\ADO.NetCodeBasedTest\StoredprocedureCSharp\StoredprocedureCSharp\bin\Debug\StoredprocedureCSharp.pdb
+D:\DotNetTraining\ADO.NetCodeBasedTest\StoredprocedureCSharp\StoredprocedureCSharp\obj\Debug\StoredprocedureCSharp.csproj.AssemblyReference.cache
+D:\DotNetTraining\ADO.NetCodeBasedTest\StoredprocedureCSharp\StoredprocedureCSharp\obj\Debug\StoredprocedureCSharp.csproj.CoreCompileInputs.cache
+D:\DotNetTraining\ADO.NetCodeBasedTest\StoredprocedureCSharp\StoredprocedureCSharp\obj\Debug\StoredprocedureCSharp.exe
+D:\DotNetTraining\ADO.NetCodeBasedTest\StoredprocedureCSharp\StoredprocedureCSharp\obj\Debug\StoredprocedureCSharp.pdb
