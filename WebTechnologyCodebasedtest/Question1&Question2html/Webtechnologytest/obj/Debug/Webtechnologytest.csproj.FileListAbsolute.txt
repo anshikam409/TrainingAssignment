@@ -1,0 +1,7 @@
+D:\DotNetTraining\WebTechnologyCodebasedtest\Webtechnologytest\Webtechnologytest\bin\Debug\Webtechnologytest.exe.config
+D:\DotNetTraining\WebTechnologyCodebasedtest\Webtechnologytest\Webtechnologytest\bin\Debug\Webtechnologytest.exe
+D:\DotNetTraining\WebTechnologyCodebasedtest\Webtechnologytest\Webtechnologytest\bin\Debug\Webtechnologytest.pdb
+D:\DotNetTraining\WebTechnologyCodebasedtest\Webtechnologytest\Webtechnologytest\obj\Debug\Webtechnologytest.csproj.AssemblyReference.cache
+D:\DotNetTraining\WebTechnologyCodebasedtest\Webtechnologytest\Webtechnologytest\obj\Debug\Webtechnologytest.csproj.CoreCompileInputs.cache
+D:\DotNetTraining\WebTechnologyCodebasedtest\Webtechnologytest\Webtechnologytest\obj\Debug\Webtechnologytest.exe
+D:\DotNetTraining\WebTechnologyCodebasedtest\Webtechnologytest\Webtechnologytest\obj\Debug\Webtechnologytest.pdb
