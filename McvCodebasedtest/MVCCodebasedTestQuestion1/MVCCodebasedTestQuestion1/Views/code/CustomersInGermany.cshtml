@@ -1,0 +1,11 @@
+﻿
+@model List<Customer>
+
+<h2>Customers in Germany</h2>
+<ul>
+    @foreach (var customer in Model)
+    {
+<li>@customer.CustomerName</li>}
+</ul>
+<h2>CustomersInGermany</h2>
+
