@@ -1,0 +1,2 @@
+D:\DotNetTraining\McvCodebasedtest\MvcCodebasedTestQuestion2\MvcCodebasedTestQuestion2\obj\Debug\MvcCodebasedTestQuestion2.csproj.AssemblyReference.cache
+D:\DotNetTraining\McvCodebasedtest\MvcCodebasedTestQuestion2\MvcCodebasedTestQuestion2\obj\Debug\MvcCodebasedTestQuestion2.csproj.CoreCompileInputs.cache
