@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MvcCodebasedTestQuestion2
+namespace MVCCodebasedTestQuestion2
 {
     public class RouteConfig
     {
@@ -16,7 +16,7 @@ namespace MvcCodebasedTestQuestion2
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Movies", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

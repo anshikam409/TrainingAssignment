@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace MvcCodebasedTestQuestion2
+namespace MVCCodebasedTestQuestion2
 {
     public class BundleConfig
     {

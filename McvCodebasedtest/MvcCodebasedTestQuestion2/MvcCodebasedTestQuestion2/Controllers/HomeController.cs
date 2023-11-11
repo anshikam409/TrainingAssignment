@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MvcCodebasedTestQuestion2.Controllers
+namespace MVCCodebasedTestQuestion2.Controllers
 {
     public class HomeController : Controller
     {

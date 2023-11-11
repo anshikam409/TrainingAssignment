@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVCCodebasedTestQuestion1.Models;
 
 namespace MVCCodebasedTestQuestion1.Controllers
 {
     public class CodeController : Controller
     {
-        
-        private NorthwindEntities dbContext = new NorthwindEntities();
-
-     
-        public ActionResult CustomersInGermany()
+        public ActionResult GermanyCustomers()
         {
-            var customers = dbContext.Customers.Where(c => c.Country == "Germany").ToList();
-            return View(customers);
+            using (var db = new NorthWind1Entities())
+            {
+                var germanCustomers = db.Customers.Where(c => c.City == "Germany").ToList();
+                return View(germanCustomers);
+            }
         }
-
-      
-        public ActionResult CustomerDetailsByOrderId()
+        public ActionResult CustomerDetails(int orderId)
         {
-            var customerDetails = dbContext.Customers
-                .Join(dbContext.Orders,
-                    customer => customer.CustomerID,
-                    order => order.CustomerID,
-                    (customer, order) => new { Customer = customer, Order = order })
-                .Where(result => result.Order.OrderID == 10248)
-                .ToList();
-
-            return View(customerDetails);
+            using (var db = new NorthWind1Entities()) 
+            {
+                var customerDetails = (from c in db.Customers
+                                       join o in db.Orders on c.CustomerID equals o.CustomerID
+                                       where o.OrderID == 10248
+                                       select new CustomerOrderDetailsModel
+                                       {
+                                           Customer = c,
+                                           Order = o
+                                       }).SingleOrDefault();
+                return View(customerDetails);
+            }
         }
     }
-
 }

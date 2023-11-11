@@ -1,90 +1,115 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Net;
-using System.Data.Entity;
-using MvcCodebasedTestQuestion2.Models;
+using MVCCodebasedTestQuestion2;
 
-namespace MvcCodebasedTestQuestion2.Controllers
+namespace MVCCodebasedTestQuestion2.Controllers
 {
     public class MoviesController : Controller
     {
-        private MoviesDbContext db = new MoviesDbContext();
+        private MovieModel db = new MovieModel();
+
+      
         public ActionResult Index()
         {
             return View(db.Movies.ToList());
         }
+
+      
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movy movy = db.Movies.Find(id);
+            if (movy == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movy);
+        }
+
+    
         public ActionResult Create()
         {
             return View();
         }
+
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Mid,Moviename,DateOfRelease")] Movie movie)
+        public ActionResult Create([Bind(Include = "MovieID,Moviename,DateOfRelease,MovieType")] Movy movy)
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movie);
+                db.Movies.Add(movy);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(movie);
+            return View(movy);
         }
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
+            Movy movy = db.Movies.Find(id);
+            if (movy == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(movy);
         }
 
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Mid,Moviename,DateOfRelease")] Movie movie)
+        public ActionResult Edit([Bind(Include = "MovieID,Moviename,DateOfRelease,MovieType")] Movy movy)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
+                db.Entry(movy).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(movie);
+            return View(movy);
         }
 
+       
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
+            Movy movy = db.Movies.Find(id);
+            if (movy == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(movy);
         }
 
-     
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Movie movie = db.Movies.Find(id);
-            db.Movies.Remove(movie);
+            Movy movy = db.Movies.Find(id);
+            db.Movies.Remove(movy);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
