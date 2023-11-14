@@ -1,36 +1,33 @@
-﻿using System;
+﻿using MVCCodebasedTestQuestion1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MVCCodebasedTestQuestion1.Models;
 
 namespace MVCCodebasedTestQuestion1.Controllers
 {
     public class CodeController : Controller
     {
-        public ActionResult GermanyCustomers()
+        private NorthwindEntities db = new NorthwindEntities(); 
+        public ActionResult CustomersInGermany()
         {
-            using (var db = new NorthWind1Entities())
-            {
-                var germanCustomers = db.Customers.Where(c => c.City == "Germany").ToList();
-                return View(germanCustomers);
-            }
+            var germanyCustomers = db.Customers.Where(c => c.Country == "Germany").ToList();
+            return View(germanyCustomers);
         }
-        public ActionResult CustomerDetails(int orderId)
+
+        public ActionResult CustomerDetailsByOrderId(int orderId = 10248)
         {
-            using (var db = new NorthWind1Entities()) 
+            var customer = db.Customers
+                .Where(c => c.Orders.Any(o => o.OrderID == orderId))
+                .SingleOrDefault();
+
+            if (customer == null)
             {
-                var customerDetails = (from c in db.Customers
-                                       join o in db.Orders on c.CustomerID equals o.CustomerID
-                                       where o.OrderID == 10248
-                                       select new CustomerOrderDetailsModel
-                                       {
-                                           Customer = c,
-                                           Order = o
-                                       }).SingleOrDefault();
-                return View(customerDetails);
+                return HttpNotFound(); 
             }
+
+            return View(customer);
         }
     }
 }
